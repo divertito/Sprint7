@@ -1,4 +1,4 @@
-package ru.yandex.praktikum.client;
+package ru.yandex.praktikum.client.courier;
 
 import io.qameta.allure.Step;
 import io.restassured.response.ValidatableResponse;
@@ -11,7 +11,7 @@ public class CourierClient extends Config {
         return getBaseSpec()
                 .body(courier)
                 .when()
-                .post()
+                .post(getCourierPath())
                 .then();
     }
 
@@ -20,7 +20,7 @@ public class CourierClient extends Config {
         return getBaseSpec()
                 .body(credentials)
                 .when()
-                .post("/login")
+                .post(getCourierPath() + "/login")
                 .then();
     }
 
@@ -29,7 +29,7 @@ public class CourierClient extends Config {
         return getBaseSpec()
                 .body(courierID)
                 .when()
-                .delete("/" + courierID)
+                .delete(getCourierPath() + "/" + courierID)
                 .then();
     }
 

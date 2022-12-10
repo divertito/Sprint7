@@ -1,5 +1,6 @@
-package ru.yandex.praktikum;
+package ru.yandex.praktikum.courierTests;
 
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
 import org.junit.After;
 import org.junit.Before;
@@ -31,6 +32,7 @@ public class CreateCourierWithEmptyCredentialsTest {
     //чтобы создать курьера, нужно передать в ручку все обязательные поля;
     //если одного из полей нет, запрос возвращает ошибку;
     @Test
+    @DisplayName("Creating courier with empty password (shouldn't be done, status code = 400)")
     public void courierWithEmptyPasswordCantBeCreatedTest() {
         courier.setPassword(null);
         ValidatableResponse responseOne = courierClient.create(courier);
@@ -42,6 +44,7 @@ public class CreateCourierWithEmptyCredentialsTest {
     }
 
     @Test
+    @DisplayName("Creating courier with empty login (shouldn't be done, status code = 400)")
     public void courierWithEmptyLoginCantBeCreatedTest() {
         courier.setLogin(null);
         ValidatableResponse responseOne = courierClient.create(courier);
@@ -53,6 +56,7 @@ public class CreateCourierWithEmptyCredentialsTest {
     }
 
     @Test
+    @DisplayName("Creating courier with empty name (should be done correctly, status code = 201)")
     public void courierWithEmptyNameCanCreatedTest() {
         courier.setFirstName(null);
         ValidatableResponse responseOne = courierClient.create(courier);

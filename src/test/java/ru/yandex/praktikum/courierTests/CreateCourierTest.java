@@ -1,5 +1,6 @@
-package ru.yandex.praktikum;
+package ru.yandex.praktikum.courierTests;
 
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
 import org.junit.After;
 import org.junit.Before;
@@ -34,6 +35,7 @@ public class CreateCourierTest {
     //курьер может авторизоваться;
     //успешный запрос возвращает id.
     @Test
+    @DisplayName("Creating new courier with valid credentials")
     public void courierCanBeCreatedTest() {
         ValidatableResponse response = courierClient.create(courier);
 

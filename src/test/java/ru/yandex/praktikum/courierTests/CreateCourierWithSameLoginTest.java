@@ -1,5 +1,6 @@
-package ru.yandex.praktikum;
+package ru.yandex.praktikum.courierTests;
 
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
 import org.junit.After;
 import org.junit.Before;
@@ -32,6 +33,7 @@ public class CreateCourierWithSameLoginTest {
     //нельзя создать двух одинаковых курьеров;
     //если создать пользователя с логином, который уже есть, возвращается ошибка.
     @Test
+    @DisplayName("Creating several same couriers (shouldn't work, status code = 409)")
     public void sameCourierCantBeCreatedTest() {
         ValidatableResponse responseOne = courierClient.create(courier);
 

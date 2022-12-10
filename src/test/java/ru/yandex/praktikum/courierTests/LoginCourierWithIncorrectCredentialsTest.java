@@ -1,5 +1,6 @@
-package ru.yandex.praktikum;
+package ru.yandex.praktikum.courierTests;
 
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
 import org.junit.After;
 import org.junit.Before;
@@ -31,6 +32,7 @@ public class LoginCourierWithIncorrectCredentialsTest {
     //для авторизации нужно передать все обязательные поля;
     //если какого-то поля нет, запрос возвращает ошибку;
     @Test
+    @DisplayName("Login with empty login")
     public void courierWithEmptyLoginCantBeLoggedInTest() {
         courier.setLogin(null);
         ValidatableResponse loginResponse = courierClient.login(CourierCredentials.from(courier));
@@ -40,7 +42,9 @@ public class LoginCourierWithIncorrectCredentialsTest {
         String message = loginResponse.extract().path("message");
         assertEquals("Incorrect validation message on try to log in with incorrect login", "Недостаточно данных для входа", message);
     }
+
     @Test
+    @DisplayName("Login with empty password")
     public void courierWithEmptyPasswordCantBeLoggedInTest() {
         courier.setPassword(null);
         ValidatableResponse loginResponse = courierClient.login(CourierCredentials.from(courier));
@@ -54,6 +58,7 @@ public class LoginCourierWithIncorrectCredentialsTest {
     //если авторизоваться под несуществующим пользователем, запрос возвращает ошибку;
     //система вернёт ошибку, если неправильно указать логин или пароль;
     @Test
+    @DisplayName("Login with invalid login")
     public void courierWithInvalidLoginCantBeLoggedInTest() {
         courier.setLogin("MarinaMarinaMarina");
         ValidatableResponse loginResponse = courierClient.login(CourierCredentials.from(courier));
@@ -63,7 +68,9 @@ public class LoginCourierWithIncorrectCredentialsTest {
         String message = loginResponse.extract().path("message");
         assertEquals("Incorrect validation message on try to log in with incorrect login", "Учетная запись не найдена", message);
     }
+
     @Test
+    @DisplayName("Login with invalid password")
     public void courierWithInvalidPasswordCantBeLoggedInTest() {
         courier.setPassword("MarinaMarinaMarina");
         ValidatableResponse loginResponse = courierClient.login(CourierCredentials.from(courier));

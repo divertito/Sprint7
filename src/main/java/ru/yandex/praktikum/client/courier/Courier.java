@@ -1,4 +1,4 @@
-package ru.yandex.praktikum.client;
+package ru.yandex.praktikum.client.courier;
 
 public class Courier {
 
