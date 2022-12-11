@@ -1,0 +1,6 @@
+ru/yandex/praktikum/courierTests/CreateCourierTest.class
+ru/yandex/praktikum/orderTests/CheckOrderListTest.class
+ru/yandex/praktikum/courierTests/CreateCourierWithEmptyCredentialsTest.class
+ru/yandex/praktikum/orderTests/CreateOrderTest.class
+ru/yandex/praktikum/courierTests/LoginCourierWithIncorrectCredentialsTest.class
+ru/yandex/praktikum/courierTests/CreateCourierWithSameLoginTest.class
